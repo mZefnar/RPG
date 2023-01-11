@@ -42,6 +42,25 @@ function dieTwenty(diceQuantity){
     return result;
 }
 
+const lightArmor = [];
+const mediumArmor = [];
+const heavyArmor = [];
+const shields = [];
+const simpleWeapons = [];
+const martialWeapons = [];
+const armor = [lightArmor, mediumArmor, heavyArmor, shields];
+const weapons = [simpleWeapons, martialWeapons];
+
+const FighterClass = {
+    className: 'Fighter',
+    classType: 'martial',
+    hitDie: 10,
+    proficient: [lightArmor, mediumArmor, heavyArmor, shields, simpleWeapons, martialWeapons],
+    classSaveThrows: ['str', 'con']
+}
+
+const classList = [FighterClass]
+
 // Establish function to build character sheets from input:
 function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
     let chaStats = {
@@ -52,6 +71,12 @@ function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
         wis: dieSix(3),
         cha: dieSix(3)
     }
+    for (i = 0; i < classList.length; i++){
+        if (chaClass === classList[i].className) {
+            chaClass = classList[i];
+        }
+    }
+    let startHitPoints = chaClass.hitDie
     return {
         _name: chaName,
         _chaLevel: chaLevel,
@@ -59,8 +84,9 @@ function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
         _classMain: chaClass,
         _race: chaRace,
         _bg: chaBackg,
-        _stats: chaStats
+        _stats: chaStats,
+        _hp: startHitPoints
     }
 }
 
-// console.log(makeCharacter('Trevor', 1, 'Fighter', 'Half-Orc', 'Soldier')._stats.str);
+console.log(makeCharacter('Trevor', 1, 'Fighter', 'Half-Orc', 'Soldier')._hp);
