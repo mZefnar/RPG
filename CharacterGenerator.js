@@ -135,7 +135,7 @@ const WizardClass = {
     classType: 'caster',
     hitDie: 6,
     proficient: [],
-    classSaveThrows: ['int' 'wis']
+    classSaveThrows: ['int', 'wis']
 }
 
 const classList = [BarbarianClass, BardClass, ClericClass, DruidClass, FighterClass, 
@@ -143,41 +143,49 @@ const classList = [BarbarianClass, BardClass, ClericClass, DruidClass, FighterCl
 
 // Describe and group all the races.
 const dwarf = {
+    raceName: 'dwarf',
     darkvision: true,
     bonus2: ['con'],
     bonus1: []
 }
 const human = {
+    raceName: 'human',
     darkvision: false,
     bonus2: [],
     bonus1: ['str', 'con', 'dex', 'int', 'wis', 'cha']
 }
 const elf = {
+    raceName: 'elf',
     darkvision: true,
     bonus2: ['dex'],
     bonus1: []
 }
 const halfOrc = {
+    raceName: 'half orc',
     darkvision: true,
     bonus2: ['str'],
     bonus1: ['con']
 }
 const halfElf = {
+    raceName: 'half elf',
     darkvision: false,
     bonus2: ['cha'],
     bonus1: ['dex', 'int']
 }
 const halfling = {
+    raceName: 'halfling',
     darkvision: false,
     bonus2: ['dex'],
     bonus1: []
 }
 const gnome = {
+    raceName: 'gnome',
     darkvision: true,
     bonus2: ['int'],
     bonus1: []
 }
 const tiefling = {
+    raceName: 'tiefling',
     darkvision: true,
     bonus2: ['cha'],
     bonus1: ['int']
@@ -202,7 +210,26 @@ function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
             chaClass = classList[i];
         }
     }
-    // Apply racial modifiers.
+    // Find race and assign properties.
+    for (i = 0; i < raceList.length; i++){
+        if (chaRace === raceList[i].raceName) {
+            chaRace = raceList[i];
+        }
+    }
+   
+    /* THIS CODE DOESN'T WORK AS INTENDED.
+    // Adjust stats for racial bonuses. 
+    for (i = 0; i < chaStats.length; i++){
+        for (j = 0; j < chaRace.bonus2.length; j++) {
+            if (chaRace.bonus2[j] === chaStats[i]) {
+                chaStats[i] += 2;
+            }
+            if (chaRace.bonus1[j] === chaStats[i]) {
+                chaStats[i] ++;
+            }
+        }
+    }
+    */
 
     // Calculate starting hit points.
     let startHitPoints = chaClass.hitDie
@@ -221,4 +248,4 @@ function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
 
 
 // Test/debugging code.
-console.log(makeCharacter('Trevor', 1, 'Fighter', 'Half-Orc', 'Soldier')._hp);
+console.log(makeCharacter('Trevor', 1, 'Fighter', 'half orc', 'Soldier')._race.bonus2);
