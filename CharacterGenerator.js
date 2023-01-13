@@ -125,7 +125,7 @@ const SorcererClass = {
 }
 const WarlockClass = {
     className: 'Warlock',
-    classType: 'caster',
+    classType: 'warlock',
     hitDie: 8,
     proficient: [],
     classSaveThrows: ['wis', 'cha']
@@ -215,24 +215,48 @@ function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
         if (chaRace === raceList[i].raceName) {
             chaRace = raceList[i];
         }
-    }
-   
-    /* THIS CODE DOESN'T WORK AS INTENDED.
-    // Adjust stats for racial bonuses. 
-    for (i = 0; i < chaStats.length; i++){
-        for (j = 0; j < chaRace.bonus2.length; j++) {
-            if (chaRace.bonus2[j] === chaStats[i]) {
-                chaStats[i] += 2;
+    } 
+    // THIS CODE DOESN'T WORK AS INTENDED.
+    // INTENDED: Adjust stats for racial bonuses. 
+    // ACTUAL : No changes.
+    const statArray = ['str', 'dex', 'con', 'int', 'wis', 'cha']
+    for (i = 0; i < Object.keys(chaStats).length; i++){
+        for (j = 0; j < Object.keys(chaRace.bonus2).length; j++) {
+            // console.log(chaRace.bonus2[j]);
+            // console.log(statArray[i]);
+            // console.log(Object.values(chaStats)[i])
+            if (chaRace.bonus2[j] === statArray[i]) {
+                console.log('stat being modified:' + Object.keys(chaStats)[i])
+                console.log('score before modification:' + Object.values(chaStats)[i])
+                let moddedStat = chaStats[i]
+                moddedStat += 2;
+                console.log('stat being modified:' + Object.keys(chaStats)[i])
+                console.log('score after modification:' + Object.values(chaStats)[i])
             }
-            if (chaRace.bonus1[j] === chaStats[i]) {
-                chaStats[i] ++;
+        }
+        for (k = 0; k < Object.keys(chaRace.bonus1).length; k++) {    
+            if (chaRace.bonus1[k] === statArray[i]) {
+                console.log('stat being modified:' + Object.keys(chaStats)[i])
+                console.log('score before modification:' + Object.values(chaStats)[i])
+                let moddedStat = chaStats[i]
+                moddedStat ++
+                console.log('stat being modified:' + Object.keys(chaStats)[i])
+                console.log('score after modification:' + Object.values(chaStats)[i])
             }
         }
     }
-    */
+    
 
-    // Calculate starting hit points.
+    //Calculate starting hit points.
     let startHitPoints = chaClass.hitDie
+    
+    
+    //TODO
+    // - create a generic .attack() method
+    // - create .saveThrow(STAT) method
+    // - assign spell slots based on classType
+
+
     // Output the character!
     return {
         _name: chaName,
@@ -248,4 +272,4 @@ function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
 
 
 // Test/debugging code.
-console.log(makeCharacter('Trevor', 1, 'Fighter', 'half orc', 'Soldier')._race.bonus2);
+ console.log(makeCharacter('Trevor', 1, 'Fighter', 'half orc', 'Soldier'))
