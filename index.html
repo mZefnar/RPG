@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Char Sheet Generator</title>
+</head>
+<body>
+    <h1>Character Builder</h1>
+    <div class="form-box">
+        <form name = 'charNameForm'>
+            <div>
+                <label for="fname">First name:</label>
+                <input type="text" id="fname">
+            </div>
+            <div>
+                <label for="lname">Last name:</label>
+                <input type="text" id="lname">
+            </div>
+            <div>
+                <label for="inputLevel">Level:</label>
+                <input type="text" id="inputLevel">
+            </div>
+            <div>
+                <label for="inputRace">Race:</label>
+                <input type="text" id="inputRace">       
+            </div>
+            <div>
+                <label for="inputClass">Class:</label>
+                <input type="text" id="inputClass">
+            </div>
+            <div>
+                <label for="inputBg">Background:</label>
+                <input type="text" id="inputBg">
+            </div>
+            <button type = 'button' onclick = 'generateCharSheet()'>Generate Character Sheet!</button>
+        </form>
+    </div>
+    <div id="outputBox">
+        <h2>Character Sheet:</h2>
+    </div>
+
+    <script src="./testScript.js"></script>
+</body>
+</html>
