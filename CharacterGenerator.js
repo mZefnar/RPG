@@ -42,6 +42,18 @@ function dieTwenty(diceQuantity){
     return result;
 }
 
+
+// Calculate stat modifier function.
+const statArray = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
+
+function findStatMod(statScore){
+    let modVal = Math.floor(Math.abs(statScore - 10) / 2);
+    if (statScore < 10){
+        modVal = modVal * -1
+    }
+    return modVal
+};
+
 // Establish various items with which characters may be proficient.
 const lightArmor = [];
 const mediumArmor = [];
@@ -196,14 +208,25 @@ const raceList = [human, elf, halfOrc, halfElf, halfling, gnome, tiefling]
 // Establish function to build character sheets from input:
 function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
     // First, let's roll stats.
-    let chaStats = {
-        str: dieSix(3),
-        dex: dieSix(3), 
-        con: dieSix(3),
-        int: dieSix(3),
-        wis: dieSix(3),
-        cha: dieSix(3)
+    let str = dieSix(3);
+    let dex = dieSix(3);
+    let con = dieSix(3);
+    let int = dieSix(3);
+    let wis = dieSix(3);
+    let cha = dieSix(3);
+    let chaStats = [str, dex, con, int, wis, cha];
+
+    // Establish character proficiency bonuses.
+    let chaProf = 2
+    if (chaLevel >= 5 && chaLevel < 11) {
+        chaProf = 3
+    } else if (chaLevel >= 11 && chaLevel < 17) {
+        chaProf = 4
+    } else if (chaLevel >= 17 && chaLevel <= 20) {
+        chaProf = 5
     }
+    
+    
     // Now let's figure out your starting class and assign it.
     for (i = 0; i < classList.length; i++){
         if (chaClass === classList[i].className) {
@@ -216,40 +239,22 @@ function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
             chaRace = raceList[i];
         }
     } 
-    // THIS CODE DOESN'T WORK AS INTENDED.
-    // INTENDED: Adjust stats for racial bonuses. 
-    // ACTUAL : No changes.
-    const statArray = ['str', 'dex', 'con', 'int', 'wis', 'cha']
-    for (i = 0; i < Object.keys(chaStats).length; i++){
+    // Assign racial stat score modifiers.
+    for (i = 0; i < chaStats.length; i++){
         for (j = 0; j < Object.keys(chaRace.bonus2).length; j++) {
-            // console.log(chaRace.bonus2[j]);
-            // console.log(statArray[i]);
-            // console.log(Object.values(chaStats)[i])
             if (chaRace.bonus2[j] === statArray[i]) {
-                console.log('stat being modified:' + Object.keys(chaStats)[i])
-                console.log('score before modification:' + Object.values(chaStats)[i])
-                let moddedStat = chaStats[i]
-                moddedStat += 2;
-                console.log('stat being modified:' + Object.keys(chaStats)[i])
-                console.log('score after modification:' + Object.values(chaStats)[i])
+                chaStats[i] += 2;
             }
         }
         for (k = 0; k < Object.keys(chaRace.bonus1).length; k++) {    
             if (chaRace.bonus1[k] === statArray[i]) {
-                console.log('stat being modified:' + Object.keys(chaStats)[i])
-                console.log('score before modification:' + Object.values(chaStats)[i])
-                let moddedStat = chaStats[i]
-                moddedStat ++
-                console.log('stat being modified:' + Object.keys(chaStats)[i])
-                console.log('score after modification:' + Object.values(chaStats)[i])
+                chaStats[i] ++;
             }
         }
     }
-    
 
-    //Calculate starting hit points.
-    let startHitPoints = chaClass.hitDie
-    
+    // Calculate starting hit points.
+    let startHitPoints = chaClass.hitDie + findStatMod(con);
     
     //TODO
     // - create a generic .attack() method
@@ -266,10 +271,21 @@ function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
         _race: chaRace,
         _bg: chaBackg,
         _stats: chaStats,
-        _hp: startHitPoints
+        _hp: startHitPoints,
+        // throwSave(saveStat){
+        //     let saveMod = findStatMod(saveStat);
+        //     for (stat in chaClass.classSaveThrows) {
+        //         if (saveStat === stat){
+        //             saveMod = saveMod + chaProf;
+        //         }
+        //         return dieTwenty(1) + saveMod;
+        //     }
+        // }
     }
 }
 
 
 // Test/debugging code.
- console.log(makeCharacter('Trevor', 1, 'Fighter', 'half orc', 'Soldier'))
+ const Trevor = makeCharacter('Trevor', 1, 'Fighter', 'half orc', 'Soldier')
+ console.log(Trevor._hp);
+ console.log(Trevor._stats);
