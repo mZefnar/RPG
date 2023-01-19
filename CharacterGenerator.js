@@ -168,54 +168,62 @@ const classList = [BarbarianClass, BardClass, ClericClass, DruidClass, FighterCl
 // Describe and group all the races.
 const dwarf = {
     raceName: 'dwarf',
+    _raceName: 'Dwarf',
     darkvision: true,
     bonus2: ['con'],
     bonus1: []
 }
 const human = {
     raceName: 'human',
+    _raceName: 'Human',
     darkvision: false,
     bonus2: [],
     bonus1: ['str', 'con', 'dex', 'int', 'wis', 'cha']
 }
 const elf = {
     raceName: 'elf',
+    _raceName: 'Elf',
     darkvision: true,
     bonus2: ['dex'],
     bonus1: []
 }
 const halfOrc = {
     raceName: 'halfOrc',
+    _raceName: 'Half-Orc',
     darkvision: true,
     bonus2: ['str'],
     bonus1: ['con']
 }
 const halfElf = {
     raceName: 'halfElf',
+    _raceName: 'Half-Elf',
     darkvision: false,
     bonus2: ['cha'],
     bonus1: ['dex', 'int']
 }
 const halfling = {
     raceName: 'halfling',
+    _raceName: 'Halfling',
     darkvision: false,
     bonus2: ['dex'],
     bonus1: []
 }
 const gnome = {
     raceName: 'gnome',
+    _raceName: 'Gnome',
     darkvision: true,
     bonus2: ['int'],
     bonus1: []
 }
 const tiefling = {
     raceName: 'tiefling',
+    _raceName: 'Tiefling',
     darkvision: true,
     bonus2: ['cha'],
     bonus1: ['int']
 }
 
-const raceList = [human, elf, halfOrc, halfElf, halfling, gnome, tiefling]
+const raceList = [dwarf, human, elf, halfOrc, halfElf, halfling, gnome, tiefling]
 
 // Establish function to build character sheets from input:
 function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {

@@ -2,7 +2,7 @@ document.getElementById('outputBox').style.display = 'none';
 
 function generateNewCharSheet(newChar) {
     let userInFname = document.getElementById('fname').value
-    let userInLevel = document.querySelector('input[name="inputLevel"]').value;
+    let userInLevel = document.getElementById('inputLevel').value;
     let userInClass = document.getElementById('inputClass').value;
     let userInRace = document.getElementById('inputRace').value;
     let userInBg = document.getElementById('inputBg').value
@@ -30,7 +30,7 @@ function generateNewCharSheet(newChar) {
     document.body.appendChild(sheetProf);
     
     let sheetCharRace = document.createElement('p')
-    sheetCharRace.innerText = 'Race: ' + newChar._race.raceName;
+    sheetCharRace.innerText = 'Race: ' + newChar._race._raceName;
     document.body.appendChild(sheetCharRace);
     
     let sheetCharBg = document.createElement('p')
