@@ -1,4 +1,4 @@
-// document.getElementById('outputBox').style.display = 'none';
+document.getElementById('outputBox').style.display = 'none';
 
 function generateNewCharSheet(newChar) {
     let userInFname = document.getElementById('fname').value

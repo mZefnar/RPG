@@ -60,29 +60,29 @@ form {
     justify-content: center;
     margin: 2px;
 }
-.name-box {
+#name-box {
     grid-area: 1 / 1 / 2 / 2;
     justify-content: left;
     padding-left: 1rem;
 }
-.hp-box {
-    grid-area: 2 / 1 / 3 / 2;
-}
-.ac-box { 
-    grid-area: 3 / 1 / 4 / 2;
-}
-.race-box {
-    grid-area: 5 / 1 / 6 / 2;
-}
-.class-box {
+#hp-box {
     grid-area: 1 / 2 / 2 / 3;
+}
+#ac-box { 
+    grid-area: 1 / 3 / 1 / 4;
+}
+#race-box {
+    grid-area: 1 / 5 / 2 / 6;
+}
+#class-box {
+    grid-area: 2 / 1 / 3 / 2;
     justify-content: left;
     padding-left: 1rem;
 }
-.level-box {
+#level-box {
     grid-area: 2 / 2 / 3 / 3;
 }
-.background-box {
+#background-box {
     grid-area: 2 / 3 / 3 / 6;
     justify-content: left;
     padding-left: 1rem;
