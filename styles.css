@@ -1,3 +1,40 @@
-.form-box {
-    display: flex;
+body {
+    background-color: antiquewhite;
+}
+
+button {
+    display: block;
+    background-color: red;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: rgb(172, 2, 2);
+}
+
+form {
+    font-size: 1.3rem;
+    margin: 10px 0px;
+}
+
+.race-form-box label {
+    padding-right: 2rem;
+    font-size: 1rem;
+}
+
+.race-form-box label:hover {
+    cursor: pointer;
+}
+
+.class-form-box label {
+    padding-right: 2rem;
+    font-size: 1rem;
+}
+
+.class-form-box label:hover {
+    cursor: pointer;
 }

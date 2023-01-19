@@ -173,13 +173,13 @@ const elf = {
     bonus1: []
 }
 const halfOrc = {
-    raceName: 'half orc',
+    raceName: 'halfOrc',
     darkvision: true,
     bonus2: ['str'],
     bonus1: ['con']
 }
 const halfElf = {
-    raceName: 'half elf',
+    raceName: 'halfElf',
     darkvision: false,
     bonus2: ['cha'],
     bonus1: ['dex', 'int']
@@ -286,6 +286,3 @@ function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
 
 
 // Test/debugging code.
- const Trevor = makeCharacter('Trevor', 1, 'Fighter', 'half orc', 'Soldier')
- console.log(Trevor._hp);
- console.log(Trevor._stats);

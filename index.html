@@ -9,39 +9,70 @@
 </head>
 <body>
     <h1>Character Builder</h1>
-    <div class="form-box">
+    <div class="form-box" id="form-box">
         <form name = 'charNameForm'>
-            <div>
-                <label for="fname">First name:</label>
-                <input type="text" id="fname">
-            </div>
-            <div>
-                <label for="lname">Last name:</label>
-                <input type="text" id="lname">
-            </div>
-            <div>
-                <label for="inputLevel">Level:</label>
-                <input type="text" id="inputLevel">
-            </div>
-            <div>
-                <label for="inputRace">Race:</label>
-                <input type="text" id="inputRace">       
-            </div>
-            <div>
-                <label for="inputClass">Class:</label>
-                <input type="text" id="inputClass">
-            </div>
-            <div>
-                <label for="inputBg">Background:</label>
-                <input type="text" id="inputBg">
-            </div>
-            <button type = 'button' onclick = 'generateCharSheet()'>Generate Character Sheet!</button>
+            <label for="fname">Name:</label>
+            <input type="text" id="fname">
         </form>
+        <form>
+            <label for="inputLevel">Level:</label>
+            <input type="number" id="inputLevel" name="inputLevel" min="1" max="20">
+        </form>    
+        <form class="race-form-box">
+            Race:
+                <input type="radio" name="race" value="human" id="human">       
+                <label for="inputRace">Human</label>
+                <input type="radio" name="race" value="elf" id="elf">       
+                <label for="inputRace">Elf</label>
+                <input type="radio" name="race" value="halfOrc" id="halfOrc">       
+                <label for="inputRace">Half-Orc</label>
+                <input type="radio" name="race" value="halfElf" id="halfElf">       
+                <label for="inputRace">Half-Elf</label>
+                <input type="radio" name="race" value="halfling" id="halfling">       
+                <label for="inputRace">Halfling</label>
+                <input type="radio" name="race" value="gnome" id="gnome">       
+                <label for="inputRace">Gnome</label>
+                <input type="radio" name="race" value="tiefling" id="tiefling">       
+                <label for="inputRace">Tiefling</label>
+        </form>        
+        <form class="class-form-box">
+            Class:
+            <input type="radio" name="class" value="Barbarian" id="barbarian">       
+            <label for="inputClass">Barbarian</label>
+            <input type="radio" name="class" value="Bard" id="bard">       
+            <label for="inputClass">Bard</label>
+            <input type="radio" name="class" value="Cleric" id="cleric">       
+            <label for="inputClass">Cleric</label>
+            <input type="radio" name="class" value="Druid" id="druid">       
+            <label for="inputClass">Druid</label>
+            <input type="radio" name="class" value="Fighter" id="fighter">       
+            <label for="inputClass">Fighter</label>
+            <input type="radio" name="class" value="Monk" id="monk">       
+            <label for="inputClass">Monk</label>       
+            <input type="radio" name="class" value="Paladin" id="paladin">       
+            <label for="inputClass">Paladin</label>
+            <input type="radio" name="class" value="Ranger" id="ranger">       
+            <label for="inputClass">Ranger</label>
+            <input type="radio" name="class" value="Rogue" id="rogue">       
+            <label for="inputClass">Rogue</label>
+            <input type="radio" name="class" value="Sorcerer" id="sorcerer">       
+            <label for="inputClass">Sorcerer</label>
+            <input type="radio" name="class" value="Warlock" id="warlock">       
+            <label for="inputClass">Warlock</label>
+            <input type="radio" name="class" value="Wizard" id="wizard">       
+            <label for="inputClass">Wizard</label>
+        </form>
+        <form>
+            <label for="inputBg">Background:</label>
+            <input type="text" id="inputBg">
+        </form>
+            <button type = 'button' id="generateButton">Generate Character Sheet!</button>
     </div>
     <div id="outputBox">
         <h2>Character Sheet:</h2>
     </div>
 
+    <script src="./CharacterGenerator.js"></script>
     <script src="./testScript.js"></script>
 </body>
 </html>
