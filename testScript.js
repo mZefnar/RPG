@@ -3,8 +3,8 @@ document.getElementById('outputBox').style.display = 'none';
 function generateNewCharSheet(newChar) {
     let userInFname = document.getElementById('fname').value
     let userInLevel = document.querySelector('input[name="inputLevel"]').value;
-    let userInClass = document.querySelector('input[name="class"]:checked').value;
-    let userInRace = document.querySelector('input[name="race"]:checked').value;
+    let userInClass = document.getElementById('inputClass').value;
+    let userInRace = document.getElementById('inputRace').value;
     let userInBg = document.getElementById('inputBg').value
 
     newChar = makeCharacter(userInFname, userInLevel, userInClass, userInRace, userInBg)
