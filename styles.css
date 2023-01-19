@@ -2,6 +2,12 @@ body {
     background-color: antiquewhite;
 }
 
+/* Form styles */
+.form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 button {
     display: block;
     background-color: red;
@@ -21,18 +27,102 @@ form {
     margin: 10px 0px;
 }
 
-.race-form-box label {
-    padding-right: 2rem;
+/* Sheet styles */
+
+.sheet-box-outer {
+    display: grid;
+    grid-template-columns: repeat(4, 25rem);
+    grid-template-rows: repeat(6, 15rem);
+    grid-gap: 5px;
+}
+.sheet-box-outer * {
+    border: 3px solid rgb(122, 106, 86);
+    background-color: rgb(230, 212, 189);
+    height: auto;
+    width: auto;
 }
 
-.race-form-box label:hover {
-    cursor: pointer;
+.sheet-box-outer * * {
+    border: 2px solid rgb(56, 1, 1);
 }
 
-.class-form-box label {
-    padding-right: 2rem;
+/* Styles Header Card */
+
+.header-card {
+    grid-area: 1 / 1 / 2 / 4;
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+.header-card * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+}
+.name-box {
+    grid-area: 1 / 1 / 2 / 2;
+    justify-content: left;
+    padding-left: 1rem;
+}
+.hp-box {
+    grid-area: 2 / 1 / 3 / 2;
+}
+.ac-box { 
+    grid-area: 3 / 1 / 4 / 2;
+}
+.race-box {
+    grid-area: 5 / 1 / 6 / 2;
+}
+.class-box {
+    grid-area: 1 / 2 / 2 / 3;
+    justify-content: left;
+    padding-left: 1rem;
+}
+.level-box {
+    grid-area: 2 / 2 / 3 / 3;
+}
+.background-box {
+    grid-area: 2 / 3 / 3 / 6;
+    justify-content: left;
+    padding-left: 1rem;
 }
 
-.class-form-box label:hover {
-    cursor: pointer;
+
+/* Stat Card Styles */
+.stat-card {
+    grid-area: 2 / 1 / 3 / 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+}
+.stat-card * {
+    margin: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.features-card {
+    grid-area: 1 / 4 / 4 / 5; 
+}
+.actions-card {
+    grid-area: 2 / 2 / 3 / 4;
+}
+
+.skills-card {
+    grid-area: 3 / 1 / 5 / 2;
+}
+
+/* Inventory Styles */
+.inventory-card {
+    grid-area: 3 / 2 / 5 / 4;
+}
+.inventory-card * {
+    border: none;
+    line-height: 2rem;
+}
+.money-card {
+    grid-area: 4 / 4 / 5 / 5;
 }

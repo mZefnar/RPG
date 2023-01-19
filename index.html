@@ -8,8 +8,8 @@
     <title>Char Sheet Generator</title>
 </head>
 <body>
-    <h1 id="main-title">Character Builder</h1>
     <div class="form-box" id="form-box">
+        <h1 id="main-title">Character Builder</h1>
         <form name = 'charNameForm'>
             <label for="fname">Name:</label>
             <input type="text" id="fname" required>
@@ -38,8 +38,6 @@
                 <option value="19">19</option>
                 <option value="20">20</option>
             </select>
-            <!-- <label for="inputLevel">Level:</label>
-            <input type="number" id="inputLevel" name="inputLevel" min="1" max="20" required> -->
         </form>    
         <form class="race-form-box">
             <label for='inputRace'>Race:</label>
@@ -79,6 +77,34 @@
     </div>
     <div id="outputBox">
         <h1>Character Sheet:</h1>
+        <div class="sheet-box-outer">
+            <div class="header-card">
+                <div id="name-box">Name</div>
+                <div id="race-box">Elf</div>
+                <div id="hp-box">HP/HPmax</div>
+                <div id="ac-box">AC</div>
+                <div id="proficiency-box">Prof:</div>
+                <div id="class-box">Class</div>
+                <div id="level-box">Level</div>
+                <div id="background-box">Background</div>
+            </div>
+            <div class="stat-card">
+                <div id="str">STR:</div>
+                <div id="dex">DEX:</div>
+                <div id="con">CON:</div>
+                <div id="int">INT:</div>
+                <div id="wis">WIS:</div>
+                <div id="cha">CHA:</div>
+            </div>
+            <div class="skills-card">skills</div>
+            <div class="actions-card">attack cast a spell</div>
+            <div class="inventory-card">
+                <ul id="backpack">Backpack:
+                </ul>
+            </div>
+            <div class="features-card">action surge darkvision</div>
+            <div class="money-card">8p 5g 6s 7c</div>
+        </div>
     </div>
 
     <script src="./CharacterGenerator.js"></script>
