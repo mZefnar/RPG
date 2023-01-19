@@ -1,3 +1,5 @@
+document.getElementById('outputBox').style.display = 'none';
+
 function generateNewCharSheet(newChar) {
     let userInFname = document.getElementById('fname').value
     let userInLevel = document.querySelector('input[name="inputLevel"]').value;
@@ -11,6 +13,10 @@ function generateNewCharSheet(newChar) {
     sheetCharName.innerText = 'Name: ' + newChar._name;
     document.body.appendChild(sheetCharName);
 
+    let sheetHP = document.createElement('p')
+    sheetHP.innerText = 'HP: ' + newChar._hp;
+    document.body.appendChild(sheetHP);
+
     let sheetCharClass = document.createElement('p')
     sheetCharClass.innerText = 'Class: ' + newChar._classMain.className;
     document.body.appendChild(sheetCharClass);
@@ -18,6 +24,10 @@ function generateNewCharSheet(newChar) {
     let sheetCharLevel = document.createElement('p')
     sheetCharLevel.innerText = 'Level: ' + newChar._chaLevel;
     document.body.appendChild(sheetCharLevel);
+
+    let sheetProf = document.createElement('p')
+    sheetProf.innerText = 'Proficiency: +' + newChar._prof;
+    document.body.appendChild(sheetProf);
     
     let sheetCharRace = document.createElement('p')
     sheetCharRace.innerText = 'Race: ' + newChar._race.raceName;
@@ -31,7 +41,20 @@ function generateNewCharSheet(newChar) {
     sheetStats.innerText = 'Str: ' + newChar._stats[0] + ' Dex: ' + newChar._stats[1] + ' Con: ' + newChar._stats[2]  + ' Int: ' + newChar._stats[3] + ' Wis: ' + newChar._stats[4] + ' Cha: ' + newChar._stats[5]
     document.body.appendChild(sheetStats);
 
+    let inventoryTitle = document.createElement('h3')
+    inventoryTitle.innerText = 'Inventory: '
+    let sheetInv = document.createElement('ul')
+    for (i = 0; i < newChar.inv.length; i++) {
+        let newInvItem = document.createElement('li')
+        newInvItem.innerText = newChar.inv[i];
+        sheetInv.appendChild(newInvItem);
+    }
+    document.body.appendChild(inventoryTitle);
+    document.body.appendChild(sheetInv);
+
     document.getElementById('form-box').style.display = 'none';
+    document.getElementById('main-title').style.display = 'none';
+    document.getElementById('outputBox').style.display = 'block';
     // TODO:const userInRace = document.querySelector('input[name="race"]:checked').value;
     // take input and pass through makeCharacter() funtion
     // generate character sheet from what makeCharacter() returns

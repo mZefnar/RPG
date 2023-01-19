@@ -216,16 +216,17 @@ function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
     let cha = dieSix(3);
     let chaStats = [str, dex, con, int, wis, cha];
 
+
     // Establish character proficiency bonuses.
     let chaProf = 2
-    if (chaLevel >= 5 && chaLevel < 11) {
+    let characterLevel = parseInt(chaLevel, 10);
+    if (characterLevel >= 5 && characterLevel < 11) {
         chaProf = 3
-    } else if (chaLevel >= 11 && chaLevel < 17) {
+    } else if (characterLevel >= 11 && characterLevel < 17) {
         chaProf = 4
-    } else if (chaLevel >= 17 && chaLevel <= 20) {
+    } else if (characterLevel >= 17 && characterLevel <= 20) {
         chaProf = 5
     }
-    
     
     // Now let's figure out your starting class and assign it.
     for (i = 0; i < classList.length; i++){
@@ -233,7 +234,12 @@ function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
             chaClass = classList[i];
         }
     }
-    // Find race and assign properties.
+
+    // Assign inventory according to class.
+    let inventoryType = chaClass.classType;
+    let startingInv = ['advPack', '150g', 'dagger', 'etc']
+
+        // Find race and assign properties.
     for (i = 0; i < raceList.length; i++){
         if (chaRace === raceList[i].raceName) {
             chaRace = raceList[i];
@@ -255,6 +261,20 @@ function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
 
     // Calculate starting hit points.
     let startHitPoints = chaClass.hitDie + findStatMod(con);
+    console.log(startHitPoints);
+
+    if (characterLevel > 1) {
+        startHitPoints += (characterLevel - 1) * findStatMod(chaStats[2]);
+        if (chaClass.hitDie === 6) {
+            startHitPoints += dieSix(characterLevel - 1)
+        } else if (chaClass.hitDie === 8) {
+            startHitPoints += dieEight(characterLevel - 1)
+        } else if (chaClass.hitDie === 10) {
+            startHitPoints += dieTen(characterLevel - 1)
+        } else if (chaClass.hitDie === 12) {
+            startHitPoints += dieTwelve(characterLevel - 1)
+        }
+    }
     
     //TODO
     // - create a generic .attack() method
@@ -272,6 +292,9 @@ function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
         _bg: chaBackg,
         _stats: chaStats,
         _hp: startHitPoints,
+        _prof: chaProf,
+        inv: startingInv
+
         // throwSave(saveStat){
         //     let saveMod = findStatMod(saveStat);
         //     for (stat in chaClass.classSaveThrows) {
