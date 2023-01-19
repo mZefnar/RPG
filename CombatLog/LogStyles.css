@@ -3,8 +3,6 @@
 .outer-box-log-and-controls {
     background-color: rgb(112, 96, 74);
     width: 100%;
-    min-height: 100px;
-    max-height: 1000px;
     display: grid;
     grid-template-columns: 2fr 1fr;
     border-radius: 8px;
@@ -13,7 +11,7 @@
 /* Chat Log */
 
 .chat-log {
-    height: auto;
+    max-height: 800px;
     background-color: #d9d68b;
     color: #751705;
     grid-column: 1;
@@ -23,6 +21,7 @@
     border-radius: 8px;
     box-shadow: 8px 6px 6px #3d3c11;
     margin-bottom: 10px;
+    overflow: scroll;
 }
 
 .chat-log * {
@@ -33,6 +32,7 @@
 
 .user-input-box {
     height: auto;
+    max-height: 800px;
     background-color: #a18e63;
     grid-column: 2;
     margin: 8px;
@@ -40,6 +40,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     border-radius: 8px;
+    overflow: scroll;
 }
 
 .inputOption {
