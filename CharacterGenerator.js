@@ -70,84 +70,96 @@ const BarbarianClass = {
     classType: 'martial',
     hitDie: 12,
     proficient: [],
-    classSaveThrows: ['str', 'con']
+    classSaveThrows: ['str', 'con'],
+    equip: ['Greataxe', '2 handaxes', '4 javelins', 'Explorer\'s Pack']
 }
 const BardClass = {
     className: 'Bard',
     classType: 'caster',
     hitDie: 8,
     proficient: [],
-    classSaveThrows: ['dex', 'cha']
+    classSaveThrows: ['dex', 'cha'],
+    equip: ['Rapier', 'Entertainer\'s Pack', 'Lute', 'Leather Armor', 'Dagger']
 }
 const ClericClass = {
     className: 'Cleric',
     classType: 'caster',
     hitDie: 8,
     proficient: [],
-    classSaveThrows: ['wis', 'cha']
+    classSaveThrows: ['wis', 'cha'],
+    equip: ['Mace', 'Scale Mail', 'Dagger', 'Priest\'s Pack', 'Shield', 'Holy Symbol']
 }
 const DruidClass = {
     className: 'Druid',
     classType: 'caster',
     hitDie: 8,
     proficient: [],
-    classSaveThrows: ['int', 'wis']
+    classSaveThrows: ['int', 'wis'],
+    equip: ['Shield', 'Quarterstaff', 'Leather Armor', 'Explorer\'s Pack', 'Druidic Focus']
 }
 const FighterClass = {
     className: 'Fighter',
     classType: 'martial',
     hitDie: 10,
     proficient: [lightArmor, mediumArmor, heavyArmor, shields, simpleWeapons, martialWeapons],
-    classSaveThrows: ['str', 'con']
+    classSaveThrows: ['str', 'con'],
+    equip: ['Chain Mail', 'Longsword', 'Shield', 'Light Crossbow', '20 bolts', 'Dungeoneer\'s Pack']
 }
 const MonkClass = {
     className: 'Monk',
     classType: 'martial',
     hitDie: 8,
     proficient: [],
-    classSaveThrows: ['dex', 'wis']
+    classSaveThrows: ['dex', 'wis'],
+    equip: ['Quarterstaff', 'Explorer\'s Pack', '10 darts']
 }
 const PaladinClass = {
     className: 'Paladin',
     classType: 'halfCast',
     hitDie: 10,
     proficient: [],
-    classSaveThrows: ['wis', 'cha']
+    classSaveThrows: ['wis', 'cha'],
+    equip: ['Longsword', 'Shield', '5 javelins', 'Priest\'s Pack', 'Chain Mail', 'Holy Symbol']
 }
 const RangerClass = {
     className: 'Ranger',
     classType: 'halfCast',
     hitDie: 10,
     proficient: [],
-    classSaveThrows: ['str', 'dex']
+    classSaveThrows: ['str', 'dex'],
+    equip: ['Scale Mail', '2 Shortswords', 'Explorer\'s Pack', 'Longbow', '20 arrows']
 }
 const RogueClass = {
     className: 'Rogue',
     classType: 'martial',
     hitDie: 8,
     proficient: [],
-    classSaveThrows: ['dex', 'int']
+    classSaveThrows: ['dex', 'int'],
+    equip: ['Rapier', 'Shortbow', '20 arrows', 'Burglar\'s Pack', 'Leather Armor', '2 daggers', 'Thieve\'s Tools']
 }
 const SorcererClass = {
     className: 'Sorcerer',
     classType: 'caster',
     hitDie: 6,
     proficient: [],
-    classSaveThrows: ['con', 'cha']
+    classSaveThrows: ['con', 'cha'],
+    equip: ['Quarterstaff', 'Arcane Focus', 'Dungeoneer\'s Pack', '2 daggers']
 }
 const WarlockClass = {
     className: 'Warlock',
     classType: 'warlock',
     hitDie: 8,
     proficient: [],
-    classSaveThrows: ['wis', 'cha']
+    classSaveThrows: ['wis', 'cha'],
+    equip: ['Quarterstaff', 'Arcane Focus', 'Scholar\'s Pack', 'Leather Armor', 'Club', '2 daggers']
 }
 const WizardClass = {
     className: 'Wizard',
     classType: 'caster',
     hitDie: 6,
     proficient: [],
-    classSaveThrows: ['int', 'wis']
+    classSaveThrows: ['int', 'wis'],
+    equip: ['Dagger', 'Component Pouch', 'Scholar\'s Pack', 'Spellbook']
 }
 
 const classList = [BarbarianClass, BardClass, ClericClass, DruidClass, FighterClass, 
@@ -236,8 +248,7 @@ function makeCharacter(chaName, chaLevel, chaClass, chaRace, chaBackg) {
     }
 
     // Assign inventory according to class.
-    let inventoryType = chaClass.classType;
-    let startingInv = ['advPack', '150g', 'dagger', 'etc']
+    let startingInv = chaClass.equip;
 
         // Find race and assign properties.
     for (i = 0; i < raceList.length; i++){
