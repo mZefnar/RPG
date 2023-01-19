@@ -1,0 +1,71 @@
+/* Fix overflow/scroll issues and set media queries. */
+
+.outer-box-log-and-controls {
+    background-color: rgb(112, 96, 74);
+    width: 100%;
+    min-height: 100px;
+    max-height: 1000px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    border-radius: 8px;
+}
+
+/* Chat Log */
+
+.chat-log {
+    height: auto;
+    background-color: #d9d68b;
+    color: #751705;
+    grid-column: 1;
+    margin: 8px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 26px;
+    border-radius: 8px;
+    box-shadow: 8px 6px 6px #3d3c11;
+    margin-bottom: 10px;
+}
+
+.chat-log * {
+    padding: 10px;
+}
+
+/* Inputs Box */
+
+.user-input-box {
+    height: auto;
+    background-color: #a18e63;
+    grid-column: 2;
+    margin: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-radius: 8px;
+}
+
+.inputOption {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 100px;
+    min-width: 100px;
+    max-width: 150px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #d9d68b;
+    color: #571103;
+    border-radius: 8px;
+    box-shadow: 6px 3px 3px #3d3c11;
+}
+
+.inputOption:hover {
+    background-color: #adab6f;
+}
+
+.inputOption:active {
+    box-shadow: none;
+    background-color: #9e9c66;
+    color: #641404;
+}
